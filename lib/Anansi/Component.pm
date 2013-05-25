@@ -38,15 +38,17 @@ Anansi::Component - A base module definition for related processes that are mana
 
 =head1 DESCRIPTION
 
+12345678901234567890123456789012345678901234567890123456789012345678901234567890
 This is a base module definition for related functionality modules.  This module
-provides the mechanism to be handled by a management module.  In order to
-simplify the recognition and management of related "component" modules, each
-component is required to have the same base namespace as it's manager.
+provides the mechanism to be handled by a L<Anansi::ComponentManager> module.
+In order to simplify the recognition and management of related I<component>
+modules, each component is required to have the same base namespace as it's
+manager.  See L<Anansi::Class> for inherited methods.
 
 =cut
 
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use base qw(Anansi::Class);
 
@@ -112,18 +114,18 @@ sub addChannel {
     $CHANNELS{$package} = {} if(!defined($CHANNELS{$package}));
     foreach my $key (keys(%parameters)) {
         if(ref($parameters{$key}) =~ /^CODE$/i) {
-            %{$CHANNELS{$package}}->{$key} = sub {
+            ${$CHANNELS{$package}}{$key} = sub {
                 my ($self, $channel, @PARAMETERS) = @_;
                 return &{$parameters{$key}}($self, $channel, (@PARAMETERS));
             };
         } elsif($parameters{$key} =~ /^[a-zA-Z]+[a-zA-Z0-9_]*(::[a-zA-Z]+[a-zA-Z0-9_]*)*$/) {
             if(exists(&{$parameters{$key}})) {
-                %{$CHANNELS{$package}}->{$key} = sub {
+                ${$CHANNELS{$package}}{$key} = sub {
                     my ($self, $channel, @PARAMETERS) = @_;
                     return &{\&{$parameters{$key}}}($self, $channel, (@PARAMETERS));
                 };
             } else {
-                %{$CHANNELS{$package}}->{$key} = sub {
+                ${$CHANNELS{$package}}{$key} = sub {
                     my ($self, $channel, @PARAMETERS) = @_;
                     return &{\&{$package.'::'.$parameters{$key}}}($self, $channel, (@PARAMETERS));
                 };
@@ -168,8 +170,8 @@ sub channel {
     my ($channel, @parameters) = @_;
     return if(ref($channel) !~ /^$/);
     return if(!defined($CHANNELS{$package}));
-    return if(!defined(%{$CHANNELS{$package}}->{$channel}));
-    return &{%{$CHANNELS{$package}}->{$channel}}($self, $channel, (@parameters));
+    return if(!defined(${$CHANNELS{$package}}{$channel}));
+    return &{${$CHANNELS{$package}}{$channel}}($self, $channel, (@parameters));
 }
 
 
@@ -237,10 +239,10 @@ sub removeChannel {
     return 0 if(0 == scalar(@parameters));
     return 0 if(!defined($CHANNELS{$package}));
     foreach my $key (@parameters) {
-        return 0 if(!defined(%{$CHANNELS{$package}}->{$key}));
+        return 0 if(!defined(${$CHANNELS{$package}}{$key}));
     }
     foreach my $key (@parameters) {
-        delete %{$CHANNELS{$package}}->{$key};
+        delete ${$CHANNELS{$package}}{$key};
     }
     return 1;
 }
