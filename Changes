@@ -6,4 +6,6 @@ Revision history for Perl extension Anansi::Component.
 0.02  Mon May 20 11:01:34 2013
 	- modified the POD.
 	- corrected HASH reference deprecations.
+0.03  Sat May 25 02:29:52 2013
+        - modified the POD.
 

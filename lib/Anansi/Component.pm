@@ -38,7 +38,6 @@ Anansi::Component - A base module definition for related processes that are mana
 
 =head1 DESCRIPTION
 
-12345678901234567890123456789012345678901234567890123456789012345678901234567890
 This is a base module definition for related functionality modules.  This module
 provides the mechanism to be handled by a L<Anansi::ComponentManager> module.
 In order to simplify the recognition and management of related I<component>
@@ -48,7 +47,7 @@ manager.  See L<Anansi::Class> for inherited methods.
 =cut
 
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 use base qw(Anansi::Class);
 
