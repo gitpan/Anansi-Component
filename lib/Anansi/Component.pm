@@ -51,13 +51,12 @@ This is a base module definition for related functionality modules.  This module
 provides the mechanism to be handled by a L<Anansi::ComponentManager> module.
 In order to simplify the recognition and management of related I<component>
 modules, each component is required to have the same base namespace as it's
-manager.  See L<Anansi::Class> for inherited methods.  Makes use of L<base>,
-and L<Anansi::Actor>.
+manager.  Uses L<Anansi::Actor>, L<Anansi::Class> and L<base>.
 
 =cut
 
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 use base qw(Anansi::Class);
 
@@ -65,6 +64,60 @@ use Anansi::Actor;
 
 
 my %CHANNELS;
+
+
+=head1 INHERITED METHODS
+
+=cut
+
+
+=head2 finalise
+
+Declared in L<Anansi::Class>.  Intended to be overridden by an extending module.
+
+=cut
+
+
+=head2 implicate
+
+Declared in L<Anansi::Class>.  Intended to be overridden by an extending module.
+
+=cut
+
+
+=head2 import
+
+Declared in L<Anansi::Class>.
+
+=cut
+
+
+=head2 initialise
+
+Declared in L<Anansi::Class>.  Intended to be overriddeni by an extending module..
+
+=cut
+
+
+=head2 old
+
+Declared in L<Anansi::Class>.
+
+=cut
+
+
+=head2 used
+
+Declared in L<Anansi::Class>.
+
+=cut
+
+
+=head2 uses
+
+Declared in L<Anansi::Class>.
+
+=cut
 
 
 =head1 METHODS

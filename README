@@ -1,4 +1,4 @@
-Anansi-Component version 0.04
+Anansi-Component version 0.05
 =============================
 
 The README is used to introduce the module and provide instructions on
@@ -27,6 +27,7 @@ This module requires these other modules and libraries:
 
   Anansi::Actor
   Anansi::Class
+  Anansi::ObjectManager
 
 COPYRIGHT AND LICENCE
 
