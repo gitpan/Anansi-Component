@@ -56,7 +56,7 @@ manager.  Uses L<Anansi::Actor>, L<Anansi::Class> and L<base>.
 =cut
 
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 use base qw(Anansi::Class);
 
@@ -71,16 +71,23 @@ my %CHANNELS;
 =cut
 
 
+=head2 DESTROY
+
+Declared in L<Anansi::Class>.
+
+=cut
+
+
 =head2 finalise
 
-Declared in L<Anansi::Class>.  Intended to be overridden by an extending module.
+Declared as a virtual method in L<Anansi::Class>.
 
 =cut
 
 
 =head2 implicate
 
-Declared in L<Anansi::Class>.  Intended to be overridden by an extending module.
+Declared as a virtual method in L<Anansi::Class>.
 
 =cut
 
@@ -94,7 +101,14 @@ Declared in L<Anansi::Class>.
 
 =head2 initialise
 
-Declared in L<Anansi::Class>.  Intended to be overriddeni by an extending module..
+Declared as a virtual method in L<Anansi::Class>.
+
+=cut
+
+
+=head2 new
+
+Declared in L<Anansi::Class>.
 
 =cut
 
@@ -246,7 +260,7 @@ The parameters to pass to the channel.
 =back
 
 Either returns an array of the available channels or passes the supplied
-parameters to the named channel.  Returns undef on error.
+parameters to the named channel.  Returns B<undef> on error.
 
 =cut
 
@@ -345,8 +359,8 @@ A string or array of strings containing the name of a channel.
 
 =back
 
-Undefines the responding subroutine for the named component channels.  Returns 1
-on success or 0 on failure.
+Undefines the responding subroutine for the named component channels.  Returns
+B<1> I<(one)> on success or B<0> I<(zero)> on failure.
 
 =cut
 
