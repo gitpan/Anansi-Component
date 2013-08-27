@@ -14,3 +14,5 @@ Revision history for Perl extension Anansi::Component.
 	- made the POD more interactive.
 0.06  Fri May 31 15:42:07 2013
 	- modified the POD.
+0.07  Fri Aug 09 14:35:56 2013
+	- modified the POD to accommodate changes to "Anansi::Class".

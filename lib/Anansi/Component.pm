@@ -45,18 +45,32 @@ Anansi::Component - A base module definition for related processes that are mana
 
     1;
 
+    package main;
+
+    use Anansi::ComponentManagerExample;
+
+    my $object = Anansi::ComponentManagerExample->new();
+    my $component = $object->addComponent();
+    my $result = $object->channel(
+        $component,
+        'SOME_COMPONENT_CHANNEL',
+        someParameter => 'some data',
+    );
+
+    1;
+
 =head1 DESCRIPTION
 
 This is a base module definition for related functionality modules.  This module
 provides the mechanism to be handled by a L<Anansi::ComponentManager> module.
 In order to simplify the recognition and management of related I<component>
 modules, each component is required to have the same base namespace as it's
-manager.  Uses L<Anansi::Actor>, L<Anansi::Class> and L<base>.
+manager.  Uses L<Anansi::Actor|Anansi::Actor>.
 
 =cut
 
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 use base qw(Anansi::Class);
 
@@ -66,75 +80,84 @@ use Anansi::Actor;
 my %CHANNELS;
 
 
-=head1 INHERITED METHODS
-
-=cut
-
-
-=head2 DESTROY
-
-Declared in L<Anansi::Class>.
-
-=cut
-
-
-=head2 finalise
-
-Declared as a virtual method in L<Anansi::Class>.
-
-=cut
-
-
-=head2 implicate
-
-Declared as a virtual method in L<Anansi::Class>.
-
-=cut
-
-
-=head2 import
-
-Declared in L<Anansi::Class>.
-
-=cut
-
-
-=head2 initialise
-
-Declared as a virtual method in L<Anansi::Class>.
-
-=cut
-
-
-=head2 new
-
-Declared in L<Anansi::Class>.
-
-=cut
-
-
-=head2 old
-
-Declared in L<Anansi::Class>.
-
-=cut
-
-
-=head2 used
-
-Declared in L<Anansi::Class>.
-
-=cut
-
-
-=head2 uses
-
-Declared in L<Anansi::Class>.
-
-=cut
-
-
 =head1 METHODS
+
+=cut
+
+
+=head2 Anansi::Class
+
+See L<Anansi::Class|Anansi::Class> for details.  A parent module of L<Anansi::Component|Anansi::Component>.
+
+=cut
+
+
+=head3 DESTROY
+
+See L<Anansi::Class::DESTROY|Anansi::Class/"DESTROY"> for details.
+
+=cut
+
+
+=head3 finalise
+
+See L<Anansi::Class::finalise|Anansi::Class/"finalise"> for details.  A virtual method.
+
+=cut
+
+
+=head3 implicate
+
+See L<Anansi::Class::implicate|Anansi::Class/"implicate"> for details.  A virtual method.
+
+=cut
+
+
+=head3 import
+
+See L<Anansi::Class::import|Anansi::Class/"import"> for details.
+
+=cut
+
+
+=head3 initialise
+
+See L<Anansi::Class::initialise|Anansi::Class/"initialise"> for details.  A virtual method.
+
+=cut
+
+
+=head3 new
+
+See L<Anansi::Class::new|Anansi::Class/"new"> for details.
+
+=cut
+
+
+=head3 old
+
+See L<Anansi::Class::old|Anansi::Class/"old"> for details.
+
+=cut
+
+
+=head3 used
+
+See L<Anansi::Class::used|Anansi::Class/"used"> for details.
+
+=cut
+
+
+=head3 uses
+
+See L<Anansi::Class::uses|Anansi::Class/"uses"> for details.
+
+=cut
+
+
+=head3 using
+
+See L<Anansi::Class::using|Anansi::Class/"using"> for details.
 
 =cut
 
